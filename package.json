@@ -1,0 +1,28 @@
+{
+  "name": "houserent",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@devui-design/icons": "^1.4.0",
+    "@surely-vue/table": "^4.3.4",
+    "axios": "^1.7.2",
+    "devui-theme": "^0.0.7",
+    "element-plus": "^2.7.4",
+    "ng-devui": "^17.1.0",
+    "vue": "^3.4.21",
+    "vue-devui": "^1.6.19",
+    "vue-router": "^4.3.2",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "less": "^4.2.0",
+    "vite": "^5.2.0"
+  }
+}
