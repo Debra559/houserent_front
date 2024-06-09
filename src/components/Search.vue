@@ -4,7 +4,7 @@
       placeholder="请选择你想选择的区域"
       :options="options"
       size="large"
-
+     
       filterable
       style="width:400px ;opacity:0.7;"
     />
@@ -303,3 +303,4 @@ const options = [
   },
 ]
 </script>
+
