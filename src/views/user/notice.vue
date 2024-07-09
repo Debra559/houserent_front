@@ -100,7 +100,6 @@
     p {
         cursor: pointer;
     }
-
     .down-down {
         color: #409EFF;
     }
