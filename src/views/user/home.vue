@@ -10,7 +10,7 @@
         >
          
           <a-menu-item key="house-watch">房源查看</a-menu-item>
-          <a-menu-item key="news">新闻公告</a-menu-item>
+          <a-menu-item key="news" @click="$router.push('notice')">新闻公告</a-menu-item>
           <a-menu-item key="feedback">用户反馈</a-menu-item>
           <a-menu-item v-if="getuser == null" key="login" style=" float : right;right:3% ;position:absolute">登录</a-menu-item>
           <a-menu-item v-else key="logout" style=" float : right;right:3% ;position:absolute">
