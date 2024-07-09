@@ -50,7 +50,7 @@ const searchText = ref('');
                 <div style="width:400px;margin: 0 auto;margin-top: 20px;">
                   <!-- <d-search icon-position="left" style="width: 400px" size="lg" placeholder="请输入区域"></d-search> -->
                   <AddressRearch></AddressRearch>
-                  <d-button type="primary" style="margin-top: 10px;" @click="$router.push('/user/page2')">搜索</d-button>
+                  <d-button type="primary" style="margin-top: 10px;" @click="$router.push('search')">搜索</d-button>
                 </div>
           </div>
         

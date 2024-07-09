@@ -1,3 +1,4 @@
+import { compareTime } from 'element-plus/es/components/time-select/src/utils.mjs';
 
 //用户路由
 export const userRoute = {
@@ -17,7 +18,31 @@ export const userRoute = {
         {
             path: 'register',
             component: () => import('../views/user/register.vue')
-        }
+        },
+        {
+            path: 'search',
+            component: () => import('../views/user/page2.vue')
+        },
+        {
+            path: 'notice',
+            component: () => import('../views/user/notice.vue')
+        },
+        {
+            path: 'notice1',
+            component: () => import('../views/user/notice1.vue')
+        },
+        {
+            path: 'notice2',
+            component: () => import('../views/user/notice2.vue')
+        },
+        {
+            path: 'notice3',
+            component: () => import('../views/user/notice3.vue')
+        },
+        {
+            path: 'notice4',
+            component: () => import('../views/user/notice4.vue')
+        },
     ]
 
 }
