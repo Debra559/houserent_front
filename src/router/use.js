@@ -20,10 +20,6 @@ export const userRoute = {
             component: () => import('../views/user/register.vue')
         },
         {
-            path: 'search',
-            component: () => import('../views/user/page2.vue')
-        },
-        {
             path: 'notice',
             component: () => import('../views/user/notice.vue')
         },
@@ -42,6 +38,28 @@ export const userRoute = {
         {
             path: 'notice4',
             component: () => import('../views/user/notice4.vue')
+        },
+        {
+            path: 'search',
+            component: () => import('../views/user/page2.vue'),
+            redirect: 'result',
+            children: [
+                {
+                    path: '/result',
+                    component: () => import('../views/user/search_module.vue')
+                },
+              ]
+        },
+        {
+            path: 'detailup',
+            component: () => import('../views/user/page2.vue'),
+            redirect: 'detail',
+            children: [
+                {
+                    path: '/detail',
+                    component: () => import('../views/user/detail_module.vue')
+                },
+              ]
         },
     ]
 
