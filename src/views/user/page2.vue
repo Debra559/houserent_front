@@ -9,14 +9,7 @@
             <hr>
             <el-main class="content">
                 <div class="router-views">
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
-                    <router-view></router-view>
+                    <router-view v-for="(home, index) in homeInfos" :key="index" :homeInfo="home"></router-view>
                 </div>
             </el-main>
             <el-footer class="footer">
@@ -33,8 +26,17 @@
 
 <script>
 import { defineComponent } from 'vue';
+import axios from 'axios';
+import { ElMessage } from 'element-plus'
+import module from './search_module.vue';
 
 export default defineComponent({
+    components: {
+        'router-view': module,
+    },
+    created() {
+        this.getHomeInfo()
+    },
     data() {
         return {
             tablePage: {
@@ -42,7 +44,14 @@ export default defineComponent({
                 pageSize: 10, // 每页多少条
                 total: 100 // 总记录数
             },
-            pageSizes: [10, 20, 30]
+            pageSizes: [10, 20, 30],
+            params: [],
+            homeInfos: [],
+        }
+    },
+    computed: {
+        selectedValue() {
+            return this.$store.getters.getSelectedValue;
         }
     },
     methods: {
@@ -53,6 +62,39 @@ export default defineComponent({
         handleSizeChange(pageSize) {
             this.tablePage.pageSize = pageSize
             // 在此刷新数据
+        },
+        async getHomeInfo() {
+            this.params = this.selectedValue
+            const response = await axios.get('http://127.0.0.1:4523/m1/4798977-4453240-default/home/info', {
+                params: this.params
+            });
+            const res = response.data; // 获取响应数据
+            if (res.code !== 200) {
+                this.Error()
+            } else {
+                this.Success()
+                this.homeInfos = res.data
+                this.homeInfos.forEach(item => {
+                    if (item.status == "danger") {
+                        item.label = "已出租"
+                    }
+                });
+                console.log(res.data)
+            }
+        },
+        // 数据请求成功的消息提醒
+        Success() {
+            ElMessage({
+                message: '数据请求成功!',
+                type: 'success',
+            })
+        },
+        // 数据请求失败的消息提醒
+        Error() {
+            ElMessage({
+                message: '数据请求失败!',
+                type: 'danger',
+            })
         }
     }
 })

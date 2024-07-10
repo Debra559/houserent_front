@@ -4,19 +4,30 @@
       placeholder="请选择你想选择的区域"
       :options="options"
       size="large"
-     
       filterable
-      style="width:400px ;opacity:0.7;"
+      style="width:400px; opacity:0.7;"
+      v-model="selectedValue"
+      @change="handleChange"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const selectedValue = computed({
+  get: () => store.getters.getSelectedValue,
+  set: (value) => store.dispatch('updateSelectedValue', value)
+});
+
 const props = {
   multiple: true,
 }
 
-const options = [
+const options = ref([
   {
     value: 'wuhan',
     label: '武汉',
@@ -301,6 +312,11 @@ const options = [
       },
     ],
   },
-]
+])
+
+const handleChange = (value) => {
+  selectedValue.value = value;
+};
+
 </script>
 

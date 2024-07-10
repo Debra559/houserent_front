@@ -19,5 +19,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 ThemeServiceInit({ infinityTheme }, 'infinityTheme');
 
-
 app.use(ElementPlus).use(Ant).use(DevUI).use(store).use(router).mount('#app')
