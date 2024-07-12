@@ -12,7 +12,7 @@
           <a-menu-item key="house-watch">房源查看</a-menu-item>
           <a-menu-item key="news" @click="$router.push('notice')">新闻公告</a-menu-item>
           <a-menu-item key="feedback">用户反馈</a-menu-item>
-          <a-menu-item v-if="getuser == null" key="login" style=" float : right;right:3% ;position:absolute">登录</a-menu-item>
+          <a-menu-item v-if="getuser == null" key="login" style=" float : right;right:3% ;position:absolute" @click="$router.push('login')">登录</a-menu-item>
           <a-menu-item v-else key="logout" style=" float : right;right:3% ;position:absolute">
             <a-sub-menu>
               <template #title>{{ store.state.user.username }}</template>
@@ -23,7 +23,6 @@
             </a-sub-menu>
           </a-menu-item>
         </a-menu>
-        <loginModal ref="LoginModalref"></loginModal>
       </a-layout-header>
       <a-layout-content style="padding: 0 5px">
        
