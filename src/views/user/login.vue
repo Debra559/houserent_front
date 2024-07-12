@@ -1,6 +1,5 @@
 <template>
-    <a-modal v-model="open" title="登录" ok-text="登录" cancel-text="取消" @ok="handleOk">
-        
+  <a-modal v-model="open" title="登录" ok-text="登录" cancel-text="取消" @ok="handleOk">
         <a-input v-model="formState.username" placeholder="用户名" style="margin-top: 10px;" />
       <a-input-password v-model="formState.password" placeholder="请输入密码" style="margin-top: 10px;">
       <template #iconRender="v">
@@ -12,7 +11,6 @@
     <div style="margin-top: 10px;">还没账号？
     <a-button type="primary" @click="RegisterModal">点击注册</a-button></div>
     </a-modal>
-
 </template>
 
 <script setup>

@@ -2,7 +2,7 @@ import { compareTime } from 'element-plus/es/components/time-select/src/utils.mj
 
 //用户路由
 export const userRoute = {
-    
+
     path: '/',
     component: () => import('../views/user/home.vue'),
     redirect: '/home',
@@ -48,19 +48,14 @@ export const userRoute = {
                     path: '/result',
                     component: () => import('../views/user/search_module.vue')
                 },
-              ]
+            ]
         },
         {
-            path: 'detailup',
-            component: () => import('../views/user/page2.vue'),
-            redirect: 'detail',
-            children: [
-                {
-                    path: '/detail',
-                    component: () => import('../views/user/detail_module.vue')
-                },
-              ]
-        },
+            path: '/detail',
+            name: 'Detail',
+            component: () => import('../views/user/detail_module.vue'),
+            props: route => ({ homeInfo: JSON.parse(route.query.homeInfo) })
+        }
     ]
 
 }

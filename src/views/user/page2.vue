@@ -28,11 +28,11 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElMessage } from 'element-plus'
-import module from './search_module.vue';
+import modulehome from './search_module.vue';
 
 export default defineComponent({
     components: {
-        'router-view': module,
+        'router-view': modulehome,
     },
     created() {
         this.getHomeInfo()
@@ -45,7 +45,7 @@ export default defineComponent({
                 total: 100 // 总记录数
             },
             pageSizes: [10, 20, 30],
-            params: [],
+            params: '',
             homeInfos: [],
         }
     },
@@ -65,6 +65,7 @@ export default defineComponent({
         },
         async getHomeInfo() {
             this.params = this.selectedValue
+            console.log(this.params)
             const response = await axios.get('http://127.0.0.1:4523/m1/4798977-4453240-default/home/info', {
                 params: this.params
             });

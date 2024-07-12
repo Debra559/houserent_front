@@ -1,5 +1,5 @@
 <template>
-    <el-card class="content-card" shadow="hover" @click="$router.push('detailup')">
+    <el-card class="content-card" shadow="hover" @click="navigateToDetail">
         <div class="flex gap-2 mt-4">
             <el-tag :key="homeInfo.label" :type="homeInfo.status" effect="dark" round>
                 {{ homeInfo.label }}
@@ -35,17 +35,23 @@
 <script>
 import { defineComponent } from 'vue';
 
-
-// 获取全局用户搜索的options值
-// this.selectedValue
-
 export default defineComponent({
     props: {
         homeInfo: {
-            status: Object,
+            type: Object,
             required: true,
         },
     },
+    methods: {
+        navigateToDetail() {
+            this.$router.push({
+                path: '/detail',
+                query: {
+                    homeInfo: JSON.stringify(this.homeInfo)
+                }
+            });
+        }
+    }
 });
 </script>
 
