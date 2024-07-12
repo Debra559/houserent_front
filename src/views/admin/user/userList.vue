@@ -28,11 +28,16 @@ const tableData = ref([
 
 <template>
     
-  <div><h1>hh</h1>
-  
+<div style="width:70%;border: 1px solid grey;border-radius: 5px;height:100px ">
+  <a-row>
+    <a-col :span="12">
+      <a-statistic title="Active Users" :value="112893" style="margin-right: 50px" />
+    </a-col>
+    <a-col :span="12">
+      <a-statistic title="Account Balance (CNY)" :precision="2" :value="112893" />
+    </a-col>
+  </a-row>
 
-
-</div>  
-
+</div>
 </template>
 

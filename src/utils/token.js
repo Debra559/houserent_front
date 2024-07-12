@@ -11,7 +11,7 @@ const delToken = () => {
 }
 
 
-export default{
+export default {
     setToken,
     getToken,
     delToken,

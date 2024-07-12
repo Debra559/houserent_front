@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { adminRoute } from "./admin.js";
-import { userRoute } from "./use.js";
+import { userRoute } from "./user.js";
 
 const routes = [ adminRoute , userRoute ];
 console.log(routes);

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-
+import { ElMessage } from 'element-plus'
 export default {
   data() {
     return {
@@ -88,12 +88,39 @@ export default {
     },
     login() {
       // 点击登录后的操作
+      this.Success1();
       this.$router.push('/home');
       console.log('Login', this.loginForm);
     },
     register() {
       // 点击注册后的操作
+
+      // 刷新页面
+      this.Success2()
+      location.reload();
       console.log('Register', this.signupForm);
+    },
+
+    // 登录成功的消息提醒
+    Success1() {
+      ElMessage({
+        message: '登录成功!',
+        type: 'success',
+      })
+    },
+    // 注册成功的消息提醒
+    Success2() {
+      ElMessage({
+        message: '注册成功!',
+        type: 'success',
+      })
+    },
+    // 登录成功的消息提醒
+    danger3() {
+      ElMessage({
+        message: '用户名或密码错误!',
+        type: 'error',
+      })
     },
   },
 };
@@ -139,7 +166,7 @@ a {
   margin: 15px 0;
 }
 
-.out{
+.out {
   width: 100%;
   background-color: rgb(245, 245, 245);
 }
