@@ -32,7 +32,7 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前款规定的债务人或者第三人为抵押人，债权人为抵押权人，提供担保的财产为抵押财产。</p>
             <br>
             <div class="content-img">
-                <img src="../../../public/image/notic2.jpg" alt="房屋出租">
+                <img src="../../../../public/image/notic2.jpg" alt="房屋出租">
             </div>
             <br>
             <p style="font-weight: bold;">三、房东出租房屋的最长期限</p>

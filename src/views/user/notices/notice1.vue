@@ -15,7 +15,7 @@
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果出租人和承租人在合同中约定，由承租人向物业公司缴纳物业费，遵守物业公司的相关管理规定，并且该合同经过了物业公司的书面确认，那么出租人就将其与物业公司的债权债务转让给了承租人，承租人应当向物业公司履行这部分权利义务。如果承租人没有付物业费，就应向物业公司承担违约责任。
             </p>
             <div class="content-img">
-                <img src="../../../public/image/notic1.jpg" alt="合同">
+                <img src="../../../../public/image/notic1.jpg" alt="合同">
             </div>
             <p style="font-weight: bold;">二、租房的流程</p>
             <br>

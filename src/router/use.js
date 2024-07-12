@@ -25,19 +25,19 @@ export const userRoute = {
         },
         {
             path: 'notice1',
-            component: () => import('../views/user/notice1.vue')
+            component: () => import('../views/user/notices/notice1.vue')
         },
         {
             path: 'notice2',
-            component: () => import('../views/user/notice2.vue')
+            component: () => import('../views/user/notices/notice2.vue')
         },
         {
             path: 'notice3',
-            component: () => import('../views/user/notice3.vue')
+            component: () => import('../views/user/notices/notice3.vue')
         },
         {
             path: 'notice4',
-            component: () => import('../views/user/notice4.vue')
+            component: () => import('../views/user/notices/notice4.vue')
         },
         {
             path: 'search',
