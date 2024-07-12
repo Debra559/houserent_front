@@ -1,17 +1,17 @@
 <template>
-    <el-card class="content-card" shadow="hover" @click="navigateToDetail">
+    <el-card class="content-card" @click="navigateToDetail">
         <div class="flex gap-2 mt-4">
-            <el-tag :key="homeInfo.label" :type="homeInfo.status" effect="dark" round>
-                {{ homeInfo.label }}
+            <el-tag :key="homeInfo.status" :type="type" effect="dark" round>
+                {{ homeInfo.status }}
             </el-tag>
         </div>
-        <img src="../../../public/image/房屋内部图.jpg" alt="房屋内部图">
+        <img :src="homeInfo.image_list[0]" alt="房屋内部图">
         <div class="content-card-inner">
-            <h3>{{ homeInfo.name }}</h3>
+            <h3>{{ homeInfo.house_name }}</h3>
             <div class="icon">
                 <el-icon>
                     <Location />
-                </el-icon> {{ homeInfo.address }}
+                </el-icon> {{ homeInfo.description }}
             </div>
             <div class="price">
                 ￥ {{ homeInfo.price }} / 月
@@ -21,10 +21,10 @@
         <div class="content-card-down">
             <el-icon>
                 <House />
-            </el-icon>&nbsp;卧室:{{ homeInfo.bed }}&nbsp;&nbsp;
+            </el-icon>&nbsp;卧室:{{ homeInfo.num_bed }}&nbsp;&nbsp;
             <el-icon>
                 <Lock />
-            </el-icon>&nbsp;洗手间:{{ homeInfo.toilet }}&nbsp;&nbsp;
+            </el-icon>&nbsp;洗手间:{{ homeInfo.num_bath }}&nbsp;&nbsp;
             <el-icon>
                 <School />
             </el-icon>&nbsp;面积:{{ homeInfo.area }}m²
@@ -51,6 +51,11 @@ export default defineComponent({
                 }
             });
         }
+    },
+    computed: {
+        type() {
+            return this.homeInfo.status === '正在出租' ? 'success' : 'danger';
+        }
     }
 });
 </script>
@@ -61,11 +66,13 @@ export default defineComponent({
     height: 400px;
     width: 300px;
     position: relative;
+    transition: box-shadow 0.3s ease-in-out;
+    /* 添加过渡效果 */
 
     .content-card-inner {
         width: 100%;
         text-align: center;
-        
+
         h3 {
             margin: 6px auto 0 auto;
         }
@@ -95,5 +102,10 @@ export default defineComponent({
         height: 200px;
         user-select: none;
     }
+}
+
+// 鼠标悬停出现阴影
+.content-card:hover {
+    box-shadow: 0 8px 16px rgba(64, 158, 255, 0.7);
 }
 </style>

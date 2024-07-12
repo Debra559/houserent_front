@@ -29,6 +29,7 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElMessage } from 'element-plus'
 import modulehome from './search_module.vue';
+import houseApis from '@/apis/houseApis.js';
 
 export default defineComponent({
     components: {
@@ -41,10 +42,10 @@ export default defineComponent({
         return {
             tablePage: {
                 pageNum: 1, // 第几页
-                pageSize: 10, // 每页多少条
+                pageSize: 8, // 每页多少条
                 total: 100 // 总记录数
             },
-            pageSizes: [10, 20, 30],
+            pageSizes: [8, 12, 16],
             params: '',
             homeInfos: [],
         }
@@ -57,31 +58,36 @@ export default defineComponent({
     methods: {
         handlePageChange(currentPage) {
             this.tablePage.pageNum = currentPage
+            this.getHomeInfo()
             // 在此刷新数据
         },
         handleSizeChange(pageSize) {
             this.tablePage.pageSize = pageSize
+            this.getHomeInfo()
             // 在此刷新数据
         },
         async getHomeInfo() {
             this.params = this.selectedValue
-            console.log(this.params)
-            const response = await axios.get('http://127.0.0.1:4523/m1/4798977-4453240-default/home/info', {
-                params: this.params
+            const res = await houseApis.GetHouseList(this.tablePage.pageNum, this.tablePage.pageSize)
+            // if (res.code !== 200) {
+            //     this.Error()
+            // } else {
+
+            //将image_list转换为列表
+            res.map(item => {
+                item.image_list = item.image_list.split(',');
+                return item;
             });
-            const res = response.data; // 获取响应数据
-            if (res.code !== 200) {
-                this.Error()
-            } else {
-                this.Success()
-                this.homeInfos = res.data
-                this.homeInfos.forEach(item => {
-                    if (item.status == "danger") {
-                        item.label = "已出租"
-                    }
-                });
-                console.log(res.data)
-            }
+            
+            this.Success()
+            this.homeInfos = res
+            this.homeInfos.forEach(item => {
+                if (item.status == "danger") {
+                    item.label = "已出租"
+                }
+            });
+            console.log(res)
+            // }
         },
         // 数据请求成功的消息提醒
         Success() {

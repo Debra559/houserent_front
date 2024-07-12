@@ -58,6 +58,8 @@
 
 <script>
 import { ElMessage } from 'element-plus'
+import userApis from '@/apis/userApis.js';
+
 export default {
   data() {
     return {
@@ -86,11 +88,12 @@ export default {
         event.target.classList.remove('focus');
       }
     },
-    login() {
+    async login() {
       // 点击登录后的操作
+
       this.Success1();
       this.$router.push('/home');
-      console.log('Login', this.loginForm);
+      console.log(res);
     },
     register() {
       // 点击注册后的操作

@@ -4,7 +4,7 @@
         <!-- 图片的div -->
         <div class="changeImg">
             <el-carousel class="changeImgIn">
-                <el-carousel-item v-for="item in arrImg" :key="item">
+                <el-carousel-item v-for="item in homeInfo.image_list" :key="item">
                     <el-image :src="item" class="img" :fit="fill"></el-image>
                 </el-carousel-item>
             </el-carousel>
@@ -15,13 +15,13 @@
             <el-card shadow="always" class="Imgdown_card">
                 <div class="Imgdown_content">
                     <el-image src="../../../public/image/homeInfoImg/卧室家具.png" class="Imgdown_img"></el-image>
-                    <p>卧室: {{ homeInfo.bed }} 个</p>
+                    <p>卧室: {{ homeInfo.num_bed }} 个</p>
                 </div>
             </el-card>
             <el-card shadow="always" class="Imgdown_card">
                 <div class="Imgdown_content">
                     <el-image src="../../../public/image/homeInfoImg/洗手间.png" class="Imgdown_img"></el-image>
-                    <p>洗手间: {{ homeInfo.toilet }} 个</p>
+                    <p>洗手间: {{ homeInfo.num_bath }} 个</p>
                 </div>
             </el-card>
             <el-card shadow="always" class="Imgdown_card">
@@ -36,7 +36,7 @@
         <div class="homeBriefly">
             <el-card shadow="always" class="homeBriefly_card">
                 <p class="homeBriefly_card_up">详细介绍</p>
-                <p>{{ homeInfo.briefly }}</p>
+                <p>{{ homeInfo.description }}</p>
             </el-card>
         </div>
 
@@ -86,12 +86,6 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     data() {
         return {
-            arrImg: [
-                '../../../public/image/homeInfoImg/home1-1.jpg',
-                '../../../public/image/homeInfoImg/home1-3.jpg',
-                '../../../public/image/homeInfoImg/home1-4.jpg',
-                '../../../public/image/homeInfoImg/home1-5.jpg'
-            ],
             options: [{
                 value: '选项1',
                 label: '1个月'
