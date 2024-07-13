@@ -9,7 +9,7 @@
                 <el-input v-model="ruleForm.id_card" class="elInout"></el-input>
             </el-form-item>
             <el-form-item label="租赁期" prop="region">
-                <el-input v-model="selectedValue" :disabled="true" class="elInout">
+                <el-input v-model="this.selectedValue" :disabled="true" class="elInout">
                 </el-input>
             </el-form-item>
             <el-form-item label="租赁时间" required>
@@ -45,12 +45,6 @@
 <script>
 
 export default {
-    computed: {
-        selectedValue() {
-            // 从路由参数中获取传递的值
-            return this.$route.params.selectedValue;
-        }
-    },
     data() {
 
         // 效验身份证号
@@ -92,9 +86,6 @@ export default {
                     { required: true, message: '请输入身份证号', trigger: 'blur' },
                     { validator: checkId_card, trigger: 'blur' }
                 ],
-                region: [
-                    { required: true, message: '请选择租赁期', trigger: 'blur' }
-                ],
                 date1: [
                     { type: 'date', required: true, message: '请选择开始日期', trigger: 'blur' }
                 ],
@@ -113,11 +104,30 @@ export default {
             this.calculateEndDate(newDate);
         }
     },
+    props: {
+        homeInfo: {
+            type: Object,
+            required: true,
+        },
+        selectedValue: {
+            type: String,
+            required: true,
+        }
+    },
     methods: {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    alert('submit!');
+                    this.ruleForm.region = this.selectedValue;
+                    this.ruleForm.date2 = this.resultDate2;
+                    this.$router.push({
+                        name: 'Contract',
+                        query: {
+                            homeInfo:JSON.stringify(this.homeInfo),
+                            ruleForm: JSON.stringify(this.ruleForm),
+                            selectedValue:JSON.stringify(this.selectedValue)
+                        }
+                    });
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -131,8 +141,8 @@ export default {
             if (startDate instanceof Date) {
                 const endDate = new Date(startDate);
                 const leaseTerm = this.selectedLeaseTerm();
-                endDate.setFullYear(startDate.getFullYear() + Math.floor(leaseTerm / 12)); 
-                endDate.setMonth(startDate.getMonth() + leaseTerm % 12); 
+                endDate.setFullYear(startDate.getFullYear() + Math.floor(leaseTerm / 12));
+                endDate.setMonth(startDate.getMonth() + leaseTerm % 12);
                 this.resultDate2 = this.formatDate(endDate);
             } else {
                 console.error('Invalid start date format:', startDate);

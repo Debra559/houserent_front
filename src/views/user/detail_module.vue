@@ -117,7 +117,13 @@ export default defineComponent({
             if (this.value == '') {
                 this.Error();
             } else {
-                this.$router.push({ name: 'UpContract', params: { selectedValue: this.value } });
+                this.$router.push({
+                    name: 'UpContract',
+                    query: {
+                        homeInfo: JSON.stringify(this.homeInfo),
+                        selectedValue: JSON.stringify(this.value)
+                    }
+                });
             }
         },
         // 预定时长必须选择的消息提醒

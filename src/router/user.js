@@ -57,9 +57,23 @@ export const userRoute = {
             props: route => ({ homeInfo: JSON.parse(route.query.homeInfo) })
         },
         {
-            path: 'upContract/:selectedValue',
+            path: 'upContract',
             name: 'UpContract',
             component: () => import('../views/user/contract/upContract.vue'),
+            props: route => ({
+                homeInfo: JSON.parse(route.query.homeInfo),
+                selectedValue:JSON.parse(route.query.selectedValue)
+            })
         },
+        {
+            path: 'contract',
+            name: 'Contract',
+            component: () => import('../views/user/contract/contract.vue'),
+            props: route => ({
+                ruleForm: JSON.parse(route.query.ruleForm),
+                homeInfo: JSON.parse(route.query.homeInfo),
+                selectedValue:JSON.parse(route.query.selectedValue)
+            })
+        }
     ]
 }
