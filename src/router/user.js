@@ -51,11 +51,15 @@ export const userRoute = {
             ]
         },
         {
-            path: '/detail',
+            path: 'detail',
             name: 'Detail',
             component: () => import('../views/user/detail_module.vue'),
             props: route => ({ homeInfo: JSON.parse(route.query.homeInfo) })
-        }
+        },
+        {
+            path: 'upContract/:selectedValue',
+            name: 'UpContract',
+            component: () => import('../views/user/contract/upContract.vue'),
+        },
     ]
-
 }

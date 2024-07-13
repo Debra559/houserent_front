@@ -74,7 +74,7 @@
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-button type="primary" class="scheduled_card_button">确定</el-button>
+                <el-button type="primary" class="scheduled_card_button" @click="goContract">确定</el-button>
             </el-card>
         </div>
     </div>
@@ -82,24 +82,25 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { ElMessage } from 'element-plus';
 
 export default defineComponent({
     data() {
         return {
             options: [{
-                value: '选项1',
+                value: '1个月',
                 label: '1个月'
             }, {
-                value: '选项2',
+                value: '6个月',
                 label: '6个月'
             }, {
-                value: '选项3',
+                value: '1年',
                 label: '1年'
             }, {
-                value: '选项4',
+                value: '2年',
                 label: '2年'
             }, {
-                value: '选项5',
+                value: '5年',
                 label: '5年'
             }],
             value: ''
@@ -110,6 +111,22 @@ export default defineComponent({
             type: Object,
             required: true,
         },
+    },
+    methods: {
+        goContract() {
+            if (this.value == '') {
+                this.Error();
+            } else {
+                this.$router.push({ name: 'UpContract', params: { selectedValue: this.value } });
+            }
+        },
+        // 预定时长必须选择的消息提醒
+        Error() {
+            ElMessage({
+                message: '预定时长必须选择!',
+                type: 'error',
+            })
+        }
     },
 });
 </script>
@@ -242,11 +259,11 @@ export default defineComponent({
             margin-top: 20px;
         }
 
-        .scheduled_card_change{
+        .scheduled_card_change {
             margin-top: 10px;
         }
 
-        .scheduled_card_button{
+        .scheduled_card_button {
             width: 100%;
             margin-top: 5%;
         }
